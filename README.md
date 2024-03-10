@@ -11,15 +11,60 @@
 
 ## 📖 Overview
 
-My homelab serves as a personal learning sandbox and a hub for new tech exploration. Meanwhile, self-hosting applications imbues a sense of ownership over the entire lifecycle of deploying and managing a stack of applications, from inception to operation. This process requires me to consider various critical aspects such as backup plans, security measures, scalability, and simplicity of deployment and upkeep.
+My homelab serves as a personal learning sandbox and a hub for new tech exploration. Meanwhile, self-hosting applications imbues a sense of ownership over the entire lifecycle of deploying and managing a stack of applications. This process requires me to understand various critical components such as backup plans, security measures, scalability, and simplicity of deployment and upkeep.
 
-This project utilises [Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) and [GitOps](https://www.weave.works/technologies/gitops) to automate provisioning, operating, and updating self-hosted services in my homelab. This repo contains all assosiated configurations and documentation.
+My homelab is designed to tolerate at least one failure of a servers. It utilises an Elastic IP (EIP) so that the Kubernetes API (kube-apiserver) will remain accessible if one (or more of the servers) becomes unavailable. 
+
+This project utilises [Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) and [GitOps](https://www.weave.works/technologies/gitops) to automate provisioning, operating, and updating self-hosted services in my homelab. 
 
 <br>
 
 
-## 🔧 Technology stack
+## ⚙️ Hardware
 
+- 3 × Lenovo `M910Q 7500T`:
+    - CPU: `Intel Core i5-7500T processor @ 2.70GHz`
+    - RAM: `8GB`
+    - SSD: `256GB`
+- 1 × 5 port switch `TP-Link LS105G`
+
+<br>
+
+## 🌐 Network topology
+
+Here's a macroscopic overview of the state of my network, connecting all my devices together, including this lab.
+
+![network](./docs/assets/drawings/topology.excalidraw.svg)
+
+
+<br>
+
+## Considerations
+
+My current homelab setup serves as a foundational learning environment. It's designed with scalability in mind to eventually adopt practices and technologies more commonly seen in production-grade deployments. When transitioning from a homelab to a production-grade Kubernetes environment, there are key differences and scaling concerns to consider. This section acknowledges these while detailing the current homelab setup and planned upgrades.
+
+### Highly available network load balancing
+In production environments, HA network load balancing often involves multiple dedicated hardware or software solutions with automatic failover capabilities. My current homelab uses [kube-vip](https://kube-vip.io/) for simplicity and due to hardware constraints, which provides a single-VIP solution with failover to ensure service continuity. While adequate for small-scale setups, this approach lacks the redundancy of more sophisticated configurations such as dual load balancer setups used in larger clusters.
+
+**Behavioral Note**: Traffic distribution methods vary between solutions like kube-vip, which directs traffic to a leader node, and [MetalLB](https://metallb.universe.tf/), which can balance traffic across multiple nodes.
+
+### Highly Available Persistent Storage
+
+Production Kubernetes clusters typically rely on robust, external persistent storage solutions, integrated through CSI drivers (e.g. AWS Elastic Block Store, GCE Persistent Disk, Azure Disk). In contrast, my homelab employs the built-in [etcd](https://docs.k3s.io/datastore/ha-embedded) of k3s for storage, suitable for learning and initial scaling. Future hardware enhancements will allow for the adoption of a dedicated storage system like [Longhorn](https://longhorn.io/), offering improved stability and features such as easy backup and restore, which are crucial for production use.
+
+**Upgrade Path**: The transition from embedded etcd to a more resilient storage solution will be a critical step in maturing the cluster's capability to handle stateful workloads reliably.
+
+
+### Network Segmentation and Zero-Trust Access
+Future network enhancements will focus on implementing network segmentation to isolate the Kubernetes cluster. This isolation helps mitigate risks and is a step towards a zero-trust network model. Implementing VLANs or similar technologies will provide fine-grained control over network traffic, aligning with zero-trust principles by verifying and minimizing access scopes.
+
+### Cloudflare Tunnel Integration
+An additional layer of security and accessibility will be considered through [Cloudflare Tunnel](https://www.cloudflare.com/en-au/products/tunnel/). This will create secure and private connections between the cluster and the Cloudflare edge, enabling safe exposure of services without exposing the cluster directly to the public internet. This complements the zero-trust approach and provides secure access to services from anywhere, without VPN overhead.
+
+
+<br>
+
+## 🔧 Core technology stack
 
 <div class="d-flex">
 <table class="table table-white table-borderer border-dark w-auto align-middle">
@@ -83,49 +128,33 @@ This project utilises [Infrastructure as Code](https://en.wikipedia.org/wiki/Inf
 
 <br>
 
-## ⚙️ Hardware
 
-- 3 × Lenovo `M910Q 7500T`:
-    - CPU: `Intel Core i5-7500T processor @ 2.70GHz`
-    - RAM: `8GB`
-    - SSD: `256GB`
-- 1 × 5 port switch `TP-Link LS105G`
+## ☁️ Cloud dependencies
 
-<br>
+While most of my infrastructure and workloads are self-hosted I do rely upon the cloud for certain key parts of my setup to avoid having to deal with chicken and the egg scenarios.
 
-## 🌐 Network topology
-
-Here's a macroscopic overview of the state of my network, connecting all my devices together, including this lab.
-
-![network](./docs/assets/drawings/topology.excalidraw.svg)
-
-
-<br>
-
-## Considerations
-
-My current homelab setup serves as a foundational learning environment. It's designed with scalability in mind to eventually adopt practices and technologies more commonly seen in production-grade deployments. When transitioning from a homelab to a production-grade Kubernetes environment, there are key differences and scaling concerns to consider. This section acknowledges these while detailing the current homelab setup and planned upgrades.
-
-### Highly available network load balancing
-In production environments, HA network load balancing often involves multiple dedicated hardware or software solutions with automatic failover capabilities. My current homelab uses [kube-vip](https://kube-vip.io/) for simplicity and due to hardware constraints, which provides a single-VIP solution with failover to ensure service continuity. While adequate for small-scale setups, this approach lacks the redundancy of more sophisticated configurations such as dual load balancer setups used in larger clusters.
-
-**Behavioral Note**: Traffic distribution methods vary between solutions like kube-vip, which directs traffic to a leader node, and [MetalLB](https://metallb.universe.tf/), which can balance traffic across multiple nodes.
-
-### Highly Available Persistent Storage
-
-Production Kubernetes clusters typically rely on robust, external persistent storage solutions, integrated through CSI drivers (e.g. AWS Elastic Block Store, GCE Persistent Disk, Azure Disk). In contrast, my homelab employs the built-in [etcd](https://docs.k3s.io/datastore/ha-embedded) of k3s for storage, suitable for learning and initial scaling. Future hardware enhancements will allow for the adoption of a dedicated storage system like [Longhorn](https://longhorn.io/), offering improved stability and features such as easy backup and restore, which are crucial for production use.
-
-**Upgrade Path**: The transition from embedded etcd to a more resilient storage solution will be a critical step in maturing the cluster's capability to handle stateful workloads reliably.
-
-
-### Network Segmentation and Zero-Trust Access
-Future network enhancements will focus on implementing network segmentation to isolate the Kubernetes cluster. This isolation helps mitigate risks and is a step towards a zero-trust network model. Implementing VLANs or similar technologies will provide fine-grained control over network traffic, aligning with zero-trust principles by verifying and minimizing access scopes.
-
-### Cloudflare Tunnel Integration
-An additional layer of security and accessibility will be considered through [Cloudflare Tunnel](https://www.cloudflare.com/en-au/products/tunnel/). This will create secure and private connections between the cluster and the Cloudflare edge, enabling safe exposure of services without exposing the cluster directly to the public internet. This complements the zero-trust approach and provides secure access to services from anywhere, without VPN overhead.
-
+<div class="d-flex">
+<table class="table table-white table-borderer border-dark w-auto align-middle">
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><img width="32" src="docs/assets/logos/vault.svg"></td>
+        <td><a href="https://www.vaultproject.io/">Hashicorp Vault</a></td>
+        <td>Secrets Management solution</td>
+    </tr>
+    <tr>
+        <td><img width="32" src="docs/assets/logos/github.svg"></td>
+        <td><a href="https://github.com/">GitHub</a></td>
+        <td>Hosting this repository and continuous integration/deployments</td>
+    </tr>
+</table>
+</div>
 
 <br>
+
 
 ## 💣 Teardown
 
