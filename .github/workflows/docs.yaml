@@ -1,11 +1,10 @@
 name: "Docs"
 
 on:
-  workflow_dispatch:
   push:
     branches: ["main"]
     paths:
-      - .github/workflows/publish-docs.yaml
+      - .github/workflows/docs.yaml
       - docs/**
       - README.md
 
@@ -40,6 +39,11 @@ jobs:
         with:
           token: "${{ steps.app-token.outputs.token }}"
           enablement: true
+
+      # TODO: Find a common method to reference image paths for Github readme and pages.
+      - name: Adjust image paths for GitHub Pages
+        run: |
+          sed -i 's|docs/src/assets/logos/|https://jordanhoare.github.io/homelab/assets/logos/|g' docs/src/introduction.md
 
       - name: Build docs
         uses: docker://ghcr.io/bjw-s/mdbook:0.4.37@sha256:928114007b3d17b94d67d6421a719be5dd80ff7f82f8c46cf13d604a0113dea9
