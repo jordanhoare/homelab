@@ -4,3 +4,23 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Homelab"
+
+[output.html]
+additional-css = ["theme/css/additional.css",]
+additional-js = []
+default-theme = "dark"
+preferred-dark-theme = "ayu"
+no-section-label = true
+git-repository-url = "https://github.com/jordanhoare/homelab"
+git-repository-icon = "fa-github"
+git-branch = "main"
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.playground]
+copyable = false
+
+[output.html.search]
+limit-results = 15

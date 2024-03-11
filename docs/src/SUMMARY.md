@@ -1,3 +1,13 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
+# Welcome
+
+---
+
+- [Introduction](introduction.md)
+
+# Notes
+
+---
+
+- [Considerations](./notes/considerations.md)
