@@ -1,0 +1,6 @@
+[book]
+authors = ["Jordan Hoare"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Homelab"
