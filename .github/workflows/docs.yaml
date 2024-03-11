@@ -1,10 +1,11 @@
 name: "Docs"
 
 on:
+  workflow_dispatch:
   push:
     branches: ["main"]
     paths:
-      - .github/workflows/docs.yaml
+      - .github/workflows/publish-docs.yaml
       - docs/**
       - README.md
 
