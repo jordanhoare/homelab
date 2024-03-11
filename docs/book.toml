@@ -6,7 +6,6 @@ src = "src"
 title = "Homelab"
 
 [output.html]
-additional-css = ["theme/css/additional.css",]
 additional-js = []
 default-theme = "dark"
 preferred-dark-theme = "ayu"
