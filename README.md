@@ -15,7 +15,13 @@ My homelab serves as a personal learning sandbox and a hub for new tech explorat
 
 My homelab is designed to tolerate at least one failure of a servers. It utilises an Elastic IP (EIP) so that the Kubernetes API (kube-apiserver) will remain accessible if one (or more of the servers) becomes unavailable. 
 
-This project utilises [Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) and [GitOps](https://www.weave.works/technologies/gitops) to automate provisioning, operating, and updating self-hosted services in my homelab. 
+Given the available hardware and my goals - focusing on the command-line interface tools and embracing [Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) and [GitOps](https://www.weave.works/technologies/gitops) - I'll be aiming to automate provisioning, operating, and maintainance of my cluster & services with:
+- ArgoCD for continuous deployment directly from your Git repository to your k3s cluster, automating application updates and ensuring your cluster's state matches the desired configuration in your version control.
+- Ansible for automating the provisioning and configuration of your cluster nodes or any underlying infrastructure changes needed.
+- Helm for package management, simplifying the deployment and management of applications on your Kubernetes cluster.
+
+
+This project utilises 
 
 <br>
 

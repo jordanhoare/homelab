@@ -11,3 +11,4 @@
 ---
 
 - [Considerations](./notes/considerations.md)
+- [Configuration](./notes/configuration.md)
