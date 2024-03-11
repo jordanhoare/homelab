@@ -34,7 +34,7 @@ This project utilises [Infrastructure as Code](https://en.wikipedia.org/wiki/Inf
 
 Here's a macroscopic overview of the state of my network, connecting all my devices together, including this lab.
 
-![network](./docs/src/assets/drawings/topology.excalidraw.svg)
+![network](https://jordanhoare.github.io/homelab/assets/drawings/topology.excalidraw.svg)
 
 
 <br>
@@ -73,53 +73,53 @@ An additional layer of security and accessibility will be considered through [Cl
         <th>Name</th>
         <th>Description</th>
     </tr>
-    <tr>
-        <td><img width="32" src="docs/src/assets/logos/ansible.svg"></td>
+    <tr> 
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/ansible.svg"></td>
         <td><a href="https://www.ansible.com">Ansible</a></td>
         <td>Automate OS configuration, external services installation and k3s installation and bootstrapping</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/argocd.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/argocd.svg"></td>
         <td><a href="https://argoproj.github.io/cd">ArgoCD</a></td>
         <td>GitOps tool for deploying applications to Kubernetes</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/cloud-init.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/cloud-init.svg"></td>
         <td><a href="https://cloudinit.readthedocs.io/en/latest/">Cloud-init</a></td>
         <td>Automate OS initial installation</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/ubuntu.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/ubuntu.svg"></td>
         <td><a href="https://ubuntu.com/">Ubuntu</a></td>
         <td>Cluster nodes OS</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/k3s.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/k3s.svg"></td>
         <td><a href="https://k3s.io/">K3S</a></td>
         <td>Lightweight distribution of Kubernetes</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/traefik.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/traefik.svg"></td>
         <td><a href="https://traefik.io/">Traefik</a></td>
         <td>Kubernetes Ingress Controller (alternative)</td>
     </tr>   
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/vault.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/vault.svg"></td>
         <td><a href="https://www.vaultproject.io/">Hashicorp Vault</a></td>
         <td>Secrets Management solution</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/external-secrets.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/external-secrets.svg"></td>
         <td><a href="https://external-secrets.io/">External Secrets Operator</a></td>
         <td>Sync Kubernetes Secrets from Hashicorp Vault</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/prometheus.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/prometheus.svg"></td>
         <td><a href="https://prometheus.io/">Prometheus</a></td>
         <td>Metrics monitoring and alerting</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/grafana.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/grafana.svg"></td>
         <td><a href="https://grafana.com/oss/grafana/">Grafana</a></td>
         <td>Monitoring Dashboards</td>
     </tr>
@@ -141,12 +141,12 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
         <th>Description</th>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/vault.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/vault.svg"></td>
         <td><a href="https://www.vaultproject.io/">Hashicorp Vault</a></td>
         <td>Secrets Management solution</td>
     </tr>
     <tr>
-        <td><img width="32" src="docs/src/assets/logos/github.svg"></td>
+        <td><img width="32" src="https://jordanhoare.github.io/homelab/assets/logos/github.svg"></td>
         <td><a href="https://github.com/">GitHub</a></td>
         <td>Hosting this repository and continuous integration/deployments</td>
     </tr>
