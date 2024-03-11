@@ -11,7 +11,8 @@ additional-js = []
 default-theme = "dark"
 preferred-dark-theme = "ayu"
 no-section-label = true
-git-repository-url = "https://github.com/jordanhoare/homelab"
+site-url = "/"
+git-repository-url = "https://github.com/jordanhoare/homelab/"
 git-repository-icon = "fa-github"
 git-branch = "main"
 
