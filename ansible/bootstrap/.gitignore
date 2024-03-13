@@ -1,4 +1,0 @@
-/secrets*.yml
-!/secrets.default
-/bootstrap.retry
-.cache/

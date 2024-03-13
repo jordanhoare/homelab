@@ -15,4 +15,4 @@ tasks:
       - ansible-playbook -i {{.ANSIBLE_DIR}}/inventory/hosts.yml {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yml --ask-become-pass --ask-vault-pass
 
     requires:
-      vars: ["playbook"]
+      vars: ["playbook", "kubernetes"]

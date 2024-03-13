@@ -14,6 +14,9 @@
         msg: "Not Ubuntu, aborting"
       when: ansible_distribution != "Ubuntu"
 
+  handlers:
+  - include_tasks: ./handlers/main.yml
+
   tasks:
     - name: Include swapfile tasks
       ansible.builtin.import_tasks: ./tasks/swapfile.yml

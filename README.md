@@ -163,9 +163,11 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
 
 ## Quick start
 
-- Bootstrap
-
+### Bootstrap
+  
   ```bash
+  ssh-keygen -t rsa -b 4096  # generate a new key if required
+  ssh-copy-id node@x.x.x.x # copy the public key (id_rsa.pub) to each managed node
   task ansible:run playbook=initialise
   ```
 
@@ -178,3 +180,58 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
   ```bash
   kubectl ...
   ```
+
+
+
+
+```
+homelab
+├─ .git
+│  ├─ ...
+├─ .github
+│  └─ workflows
+│     └─ docs.yaml
+├─ .gitignore
+├─ .taskfiles
+│  └─ ansible
+│     └─ taskfile.yaml
+├─ ansible
+│  ├─ bootstrap
+│  │  ├─ .gitignore
+│  │  ├─ inventory
+│  │  │  ├─ group_vars
+│  │  │  │  └─ kubernetes.yml
+│  │  │  └─ hosts.yml
+│  │  ├─ playbooks
+│  │  │  ├─ handlers
+│  │  │  │  └─ main.yml
+│  │  │  ├─ initialise.yml
+│  │  │  ├─ tasks
+│  │  │  │  ├─ admin.yml
+│  │  │  │  ├─ apt.yml
+│  │  │  │  ├─ apt_extra_packages.yml
+│  │  │  │  ├─ deploy.yml
+│  │  │  │  ├─ fail2ban.yml
+│  │  │  │  ├─ ssh.yml
+│  │  │  │  ├─ swapfile.yml
+│  │  │  │  ├─ ufw.yml
+│  │  │  │  └─ unattended-upgrades.yml
+│  │  │  └─ templates
+│  │  │     ├─ apt
+│  │  │     │  ├─ 10periodic.j2
+│  │  │     │  └─ 50unattended-upgrades.j2
+│  │  │     ├─ ssmtp
+│  │  │     │  └─ ssmtp.conf.j2
+│  │  │     ├─ sudoers.d.j2
+│  │  │     └─ swapfile
+│  │  │        └─ 10-vm.conf.j2
+│  │  ├─ README.md
+│  │  └─ secrets
+│  │     └─ vault.yml
+│  ├─ requirements.txt
+│  └─ requirements.yml
+├─ docs
+│  ├─ ...
+├─ README.md
+└─ taskfile.yaml
+```

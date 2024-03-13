@@ -1,0 +1,9 @@
+---
+- name: Pre tasks
+  hosts: all
+  pre_tasks:
+    - name: Verify Ansible is version 2.11 or above.
+      assert:
+        that: "ansible_version.full is version_compare('2.11', '>=')"
+        msg: >
+          "Ansible is out of date. See here for more info."
