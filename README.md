@@ -161,6 +161,15 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
 
 <br>
 
+## Quick start
+
+- Bootstrap
+
+  ```bash
+  task ansible:run playbook=initialise
+  ```
+
+<br>
 
 ## 💣 Teardown
 

@@ -1,0 +1,13 @@
+---
+- name: "ufw: install package"
+  apt: state=present pkg=ufw
+
+- name: "ufw: enable"
+  ufw: state=enabled
+
+- name: "ufw: allow ssh traffic"
+  ufw: rule=allow port=22 proto=tcp
+
+- name: "ufw: allow ssh traffic"
+  ufw: rule=allow port=6443 proto=tcp
+  

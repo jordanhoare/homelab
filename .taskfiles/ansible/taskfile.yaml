@@ -1,0 +1,18 @@
+version: '3'
+
+tasks:
+
+  # Todo: env task
+
+  run:
+    desc: "Run an Ansible playbook"
+    summary: |
+      Args:
+        cluster: Cluster to run command against (required)
+        playbook: Playbook to run (required)
+    prompt: Run Ansible playbook '{{.playbook}}' ... continue?
+    cmds:
+      - ansible-playbook -i {{.ANSIBLE_DIR}}/inventory/hosts.yml {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yml --ask-become-pass --ask-vault-pass
+
+    requires:
+      vars: ["playbook"]

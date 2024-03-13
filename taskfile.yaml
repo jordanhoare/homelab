@@ -1,0 +1,13 @@
+---
+version: "3"
+
+vars:
+  ANSIBLE_DIR: "{{.ROOT_DIR}}/ansible/bootstrap" # TODO: clean up directory structure
+
+includes:
+  ansible: .taskfiles/Ansible/Taskfile.yaml
+  
+tasks:
+  default:
+    silent: true
+    cmd: task -l

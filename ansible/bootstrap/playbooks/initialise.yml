@@ -1,0 +1,43 @@
+---
+- name: Bootstrap Ubuntu Hosts
+  hosts: kubernetes
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: 'bootstrap: include secrets'
+      ansible.builtin.include_vars:
+        file: '../secrets/vault.yml'
+
+    - name: 'bootstrap: assert distribution is Ubuntu'
+      fail:
+        msg: "Not Ubuntu, aborting"
+      when: ansible_distribution != "Ubuntu"
+
+  tasks:
+    - name: Include swapfile tasks
+      ansible.builtin.import_tasks: ./tasks/swapfile.yml
+
+    - name: Include apt tasks
+      ansible.builtin.import_tasks: ./tasks/apt.yml
+
+    - name: Include admin tasks
+      ansible.builtin.import_tasks: ./tasks/admin.yml
+
+    - name: Include ufw tasks
+      ansible.builtin.import_tasks: ./tasks/ufw.yml
+
+    - name: Include ssh tasks
+      ansible.builtin.import_tasks: ./tasks/ssh.yml
+
+    - name: Include fail2ban tasks
+      ansible.builtin.import_tasks: ./tasks/fail2ban.yml
+
+    - name: Include unattended-upgrades tasks
+      ansible.builtin.import_tasks: ./tasks/unattended-upgrades.yml
+
+    - name: Include apt_extra_packages tasks
+      ansible.builtin.import_tasks: ./tasks/apt_extra_packages.yml
+
+    - name: Include deploy tasks
+      ansible.builtin.import_tasks: ./tasks/deploy.yml
