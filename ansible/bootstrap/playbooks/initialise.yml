@@ -14,9 +14,6 @@
         msg: "Not Ubuntu, aborting"
       when: ansible_distribution != "Ubuntu"
 
-  handlers:
-  - include_tasks: ./handlers/main.yml
-
   tasks:
     - name: Include swapfile tasks
       ansible.builtin.import_tasks: ./tasks/swapfile.yml
@@ -44,3 +41,16 @@
 
     - name: Include deploy tasks
       ansible.builtin.import_tasks: ./tasks/deploy.yml
+
+  # # TODO: Investigate a better way to manage handlers
+  # handlers:
+  # - include_tasks: handlers/main.yml
+  
+  handlers:
+    - name: restart ssh
+      service: name=ssh state=restarted
+
+    - name: restart fail2ban
+      service: name=fail2ban state=restarted
+  
+

@@ -1,6 +1,13 @@
 ---
+- name: "Update apt cache"
+  apt:
+    update_cache: yes
+
 - name: "fail2ban: install package"
-  apt: state=present pkg=fail2ban
+  apt: 
+    state: present 
+    pkg: fail2ban
+    update_cache: yes  
 
 - name: "fail2ban: enable system service and ensure it's started"
   systemd:

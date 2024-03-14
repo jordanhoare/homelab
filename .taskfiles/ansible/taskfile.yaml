@@ -2,17 +2,14 @@ version: '3'
 
 tasks:
 
-  # Todo: env task
-
   run:
     desc: "Run an Ansible playbook"
     summary: |
       Args:
-        cluster: Cluster to run command against (required)
+        namespace: Namespace to run command against (required)
         playbook: Playbook to run (required)
-    prompt: Run Ansible playbook '{{.playbook}}' ... continue?
+    prompt: "Run Ansible playbook '{{.playbook}}' from the '{{.namespace}}' namespace ... continue?"
     cmds:
-      - ansible-playbook -i {{.ANSIBLE_DIR}}/inventory/hosts.yml {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yml --ask-become-pass --ask-vault-pass
-
+      - ansible-playbook -i {{.ANSIBLE_DIR}}/{{.namespace}}/inventory/hosts.yml {{.ANSIBLE_DIR}}/{{.namespace}}/playbooks/{{.playbook}}.yml --ask-become-pass --ask-vault-pass
     requires:
-      vars: ["playbook", "kubernetes"]
+      vars: ["playbook", "namespace"]

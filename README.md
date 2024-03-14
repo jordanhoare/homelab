@@ -164,11 +164,17 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
 ## Quick start
 
 ### Bootstrap
-  
   ```bash
   ssh-keygen -t rsa -b 4096  # generate a new key if required
-  ssh-copy-id node@x.x.x.x # copy the public key (id_rsa.pub) to each managed node
-  task ansible:run playbook=initialise
+  ssh-copy-id node@192.168.238.137 # copy the public key (id_rsa.pub) to each managed node
+  task ansible:run namespace=bootstrap playbook=initialise
+  ```
+
+### Kubernetes
+
+#### Intialise
+  ```bash
+  task ansible:run namespace=kubernetes playbook=initialise
   ```
 
 <br>
@@ -180,9 +186,6 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
   ```bash
   kubectl ...
   ```
-
-
-
 
 ```
 homelab
@@ -197,7 +200,6 @@ homelab
 │     └─ taskfile.yaml
 ├─ ansible
 │  ├─ bootstrap
-│  │  ├─ .gitignore
 │  │  ├─ inventory
 │  │  │  ├─ group_vars
 │  │  │  │  └─ kubernetes.yml
@@ -228,6 +230,79 @@ homelab
 │  │  ├─ README.md
 │  │  └─ secrets
 │  │     └─ vault.yml
+│  ├─ kubernetes
+│  │  ├─ inventory
+│  │  │  ├─ group_vars
+│  │  │  │  └─ kubernetes.yml
+│  │  │  └─ hosts.yml
+│  │  ├─ playbooks
+│  │  │  ├─ handlers
+│  │  │  │  └─ main.yml
+│  │  │  ├─ initialise.yml
+│  │  │  ├─ kubeconfig
+│  │  │  ├─ roles
+│  │  │  │  ├─ download
+│  │  │  │  │  └─ tasks
+│  │  │  │  │     └─ main.yml
+│  │  │  │  ├─ k3s
+│  │  │  │  │  └─ node
+│  │  │  │  │     └─ defaults
+│  │  │  │  │        └─ main.yml
+│  │  │  │  ├─ k3s_agent
+│  │  │  │  │  ├─ tasks
+│  │  │  │  │  │  ├─ http_proxy.yml
+│  │  │  │  │  │  └─ main.yml
+│  │  │  │  │  └─ templates
+│  │  │  │  │     ├─ http_proxy.conf.j2
+│  │  │  │  │     └─ k3s.service.j2
+│  │  │  │  ├─ k3s_custom_registries
+│  │  │  │  │  ├─ defaults
+│  │  │  │  │  │  └─ main.yml
+│  │  │  │  │  └─ tasks
+│  │  │  │  │     └─ main.yml
+│  │  │  │  ├─ k3s_server
+│  │  │  │  │  ├─ defaults
+│  │  │  │  │  │  └─ main.yml
+│  │  │  │  │  ├─ tasks
+│  │  │  │  │  │  ├─ fetch_k3s_init_logs.yml
+│  │  │  │  │  │  ├─ http_proxy.yml
+│  │  │  │  │  │  ├─ kube-vip.yml
+│  │  │  │  │  │  ├─ main.yml
+│  │  │  │  │  │  ├─ metallb.yml
+│  │  │  │  │  │  └─ vip.yml
+│  │  │  │  │  └─ templates
+│  │  │  │  │     ├─ content.j2
+│  │  │  │  │     ├─ http_proxy.conf.j2
+│  │  │  │  │     ├─ k3s.service.j2
+│  │  │  │  │     ├─ kubevip.yaml.j2
+│  │  │  │  │     └─ vip.yaml.j2
+│  │  │  │  ├─ k3s_server_post
+│  │  │  │  │  ├─ defaults
+│  │  │  │  │  │  └─ main.yml
+│  │  │  │  │  ├─ tasks
+│  │  │  │  │  │  ├─ calico.yml
+│  │  │  │  │  │  ├─ cilium.yml
+│  │  │  │  │  │  ├─ main.yml
+│  │  │  │  │  │  └─ metallb.yml
+│  │  │  │  │  └─ templates
+│  │  │  │  │     ├─ calico.crs.j2
+│  │  │  │  │     ├─ cilium.crs.j2
+│  │  │  │  │     └─ metallb.crs.j2
+│  │  │  │  ├─ prereq
+│  │  │  │  │  ├─ defaults
+│  │  │  │  │  │  └─ main.yml
+│  │  │  │  │  └─ tasks
+│  │  │  │  │     └─ main.yml
+│  │  │  │  └─ reset
+│  │  │  │     └─ tasks
+│  │  │  │        ├─ main.yml
+│  │  │  │        └─ umount_with_children.yml
+│  │  │  └─ tasks
+│  │  │     └─ main.yml
+│  │  ├─ README.md
+│  │  └─ secrets
+│  │     └─ vault.yml
+│  ├─ README.md
 │  ├─ requirements.txt
 │  └─ requirements.yml
 ├─ docs

@@ -22,7 +22,7 @@ ssh-keygen -t rsa -b 4096
 
 To enable passwordless SSH authentication, you need to copy the public key (id_rsa.pub) to each managed node.
 ```zsh
-ssh-copy-id node@192.168.238.134
+ssh-copy-id node@192.168.238.137
 ```
 
 ## Get started
@@ -32,4 +32,6 @@ ssh-copy-id node@192.168.238.134
 ansible-galaxy install -r ./ansible/requirements.yml
 ```
 
+## References
 
+- https://github.com/techno-tim/k3s-ansible
