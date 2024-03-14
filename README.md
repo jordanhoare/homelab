@@ -163,27 +163,29 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
 
 ## Quick start
 
+### SSH key pairs
+```zsh
+ssh-keygen -t rsa -b 4096 # ignore if already exists
+ssh-copy-id node@192.168.238.137
+```
+
 ### Bootstrap
-  ```bash
-  ssh-keygen -t rsa -b 4096  # generate a new key if required
-  ssh-copy-id node@192.168.238.137 # copy the public key (id_rsa.pub) to each managed node
-  task ansible:run namespace=bootstrap playbook=initialise
-  ```
+```zsh
+task ansible:run namespace=bootstrap playbook=initialise
+```
 
 ### Kubernetes
-
-#### Intialise
-  ```bash
-  task ansible:run namespace=kubernetes playbook=initialise
-  ```
-
+```zsh
+task ansible:run namespace=kubernetes playbook=initialise
+```
+  
 <br>
 
 ## 💣 Teardown
 
 - TBC
 
-  ```bash
+  ```zsh
   kubectl ...
   ```
 
