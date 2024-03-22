@@ -23,3 +23,5 @@ For applications like Traefik that are intended to be deployed in their own uniq
 - Multiple ArgoCD applications: another approach is to create separate ArgoCD Application resources for different applications or groups of applications that should be deployed in specific namespaces. For instance, you could have one ArgoCD Application resource for Traefik that targets the traefik namespace and another for a different app that targets a different namespace. This method allows you finer control over the deployment process and the sync policies for each set of resources.
 
 By default, the destination.namespace acts as a fallback for any resources that do not specify a namespace. It's a good practice to have this set as a default, even if most of your resources specify a namespace, in case some resources are intended to be deployed to a general or default namespace.
+
+

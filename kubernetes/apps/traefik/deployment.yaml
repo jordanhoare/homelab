@@ -1,7 +1,8 @@
+# kubernetes\apps\traefik\traefik-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: traefik-placeholder
+  name: traefik
   namespace: traefik
 spec:
   replicas: 1
@@ -14,7 +15,7 @@ spec:
         app: traefik
     spec:
       containers:
-      - name: placeholder
-        image: nginx:latest
+      - name: traefik
+        image: traefik:v2.5.1
         ports:
         - containerPort: 80

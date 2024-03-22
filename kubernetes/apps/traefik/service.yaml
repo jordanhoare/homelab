@@ -1,7 +1,8 @@
+# kubernetes\apps\traefik\traefik-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: traefik-service
+  name: traefik
   namespace: traefik
 spec:
   selector:

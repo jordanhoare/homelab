@@ -1,12 +1,13 @@
----
 version: "3"
 
 vars:
-  ANSIBLE_DIR: "{{.ROOT_DIR}}/ansible" # TODO: clean up directory structure
+  ANSIBLE_DIR: "{{.ROOT_DIR}}/ansible"
+  KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
 
 includes:
-  ansible: .taskfiles/Ansible/Taskfile.yaml
-  
+  ansible: .taskfiles/ansible/taskfile.yaml
+  kubernetes: .taskfiles/kubernetes/taskfile.yaml
+
 tasks:
   default:
     silent: true
