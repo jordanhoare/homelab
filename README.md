@@ -19,7 +19,7 @@ My homelab serves as a personal learning sandbox and a hub for new tech explorat
 
 > [!NOTE]
 >
-> As much as possible I try to keep documentation for any decisions I make, or troubles I run into.. You can check out my notes related to my approach, design considerations and ideas, [here](jordanhoare.github.io/homelab/).
+> As much as possible I try to keep documentation for any decisions I make, or troubles I run into.. You can check out my notes related to my approach, design considerations and ideas, [here](https://jordanhoare.github.io/homelab/).
 
 While developing my homelab I have a few principles that underpin my decisions:
 
