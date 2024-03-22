@@ -3,7 +3,6 @@
 **[Notes](#Notes) • [Topology](#🌐-network-topology) • [Hardware](#⚙️-hardware)**
 
 [![documentation](https://img.shields.io/website?label=document&logo=gitbook&logoColor=white&style=flat-square&url=https://jordanhoare.github.io/homelab/)](https://jordanhoare.github.io/homelab/)
-[![license](https://img.shields.io/github/license/jordanhoare/homelab?style=flat-square&logo=gnu&logoColor=white)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![stars](https://img.shields.io/github/stars/jordanhoare/homelab?logo=github&logoColor=white&color=gold&style=flat-square)](https://github.com/jordanhoare/homelab)
 
 <br>
