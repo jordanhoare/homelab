@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/jordanhoare/homelab.git'
-    path: 'kubernetes/apps/*'
+    path: 'kubernetes/apps/'
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
