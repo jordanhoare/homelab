@@ -1,0 +1,2 @@
+
+My homelab is designed to tolerate at least one failure of a servers. It utilises an Elastic IP (EIP) so that the Kubernetes API (kube-apiserver) will remain accessible if one (or more of the servers) becomes unavailable.
