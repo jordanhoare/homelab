@@ -31,7 +31,7 @@ ssh-keygen -t rsa -b 4096
 Copy the public key to your managed node(s) 
 To enable passwordless SSH authentication, you need to copy the public key (id_rsa.pub) to each managed node. The easiest way to do this is with the `ssh-copy-id` command:
 ```zsh
-ssh-copy-id node@192.168.238.137
+ssh-copy-id node@192.168.238.139
 ```
 
 ## Getting started

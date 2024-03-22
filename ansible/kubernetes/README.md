@@ -15,13 +15,13 @@ task ansible:run namespace=kubernetes playbook=initialise
 Copy your kube config locally:
 ```zsh
 ping 192.168.x.x # specified in the config.yml
-ssh node@192.168.238.137
+ssh node@192.168.238.139
 ```
 
 ### Kubectl
 Copy your kube config locally:
 ```zsh
-scp node@192.168.238.137:~/.kube/config ~/.kube/config
+scp node@192.168.238.139:~/.kube/config ~/.kube/config
 kubectl get nodes
 ```
 
