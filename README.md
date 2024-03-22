@@ -9,7 +9,7 @@
 
 ## 📖 Overview
 
-This is a mono repository for my home infrastructure and Kubernetes cluster. I aim to adhere to Infrastructure as Code (IaC) and GitOps practices with toolings from [Ansible](https://www.ansible.com/), [HashiCorp](https://www.hashicorp.com/), [Kubernetes](https://kubernetes.io/), [Helm](https://github.com/helm/helm), [ArgoCD](https://github.com/argoproj/argo-cd), [Renovate](https://github.com/renovatebot/renovate), and [GitHub Actions](https://github.com/features/actions).
+This is a mono repository for my home infrastructure and Kubernetes cluster. I aim to adhere to Infrastructure as Code (IaC) and GitOps practices with toolings from [Ansible](https://www.ansible.com/), [HashiCorp](https://www.hashicorp.com/), [Kubernetes](https://kubernetes.io/), [Helm](https://github.com/helm/helm), [Kustomize](https://kustomize.io/), [ArgoCD](https://github.com/argoproj/argo-cd), [Renovate](https://github.com/renovatebot/renovate), and [GitHub Actions](https://github.com/features/actions).
 
 My homelab serves as a personal learning sandbox and a hub for new tech exploration. Meanwhile, self-hosting applications imbues a sense of ownership over the entire lifecycle of deploying and managing a stack of applications. This process requires me to understand various critical components such as backup plans, security measures, scalability, and simplicity of deployment and upkeep.
 
