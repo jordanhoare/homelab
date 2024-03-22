@@ -23,10 +23,10 @@ My homelab serves as a personal learning sandbox and a hub for new tech explorat
 
 While developing my homelab I have a few principles that underpin my decisions:
 
+- All config, infra and orchestration should be idempotent and be managable solely through CLI
 - All applications and infrastructure (outside of my **cloud dependencies**) are run entirely on k3s. I have no VM's running auxiliary services such as DNS or storage
-- I don't rely on persistent storage or stateful sets (at this moment in time)
-- The cluster should be designed to tolerate at least one failure of a servers. 
-
+- I don't rely on persistent storage or stateful sets (until new hardware is purchased)
+- The cluster should be designed to tolerate at least one failure of a servers
 
 <br>
 
@@ -36,12 +36,13 @@ This Git repository contains the following directories:
 
 ```zsh
 📁 homelab
-├── 📁 ansible
-│   ├── 📁 bootstrap
-│   ├── 📁 kubernetes
-│   └── 📁 storage
-└── 📁 kubernetes
-    └── 📁 ...
+├── 📁 ansible              # 
+│   ├── 📁 bootstrap        # 
+│   ├── 📁 kubernetes       # 
+│   └── 📁 storage          #          
+└── 📁 kubernetes           # 
+    ├── 📁 kubernetes       # 
+    └── 📁 argocd           # 
 ```
 
 <br>
@@ -143,3 +144,14 @@ All of these applications are run entirely on the k3s cluster.
 Here's a macroscopic overview of the state of my network, connecting all my devices together, including this lab.
 
 ![network](https://raw.githubusercontent.com/jordanhoare/homelab/main/docs/src/assets/drawings/topology.excalidraw.svg)
+
+<br> 
+
+## 🤙 Related projects & many thanks 
+
+This project was heavily influenced by the following projects and communities, shout out to all the amazing people and resources for design, code and ideas:
+
+- [r/Homelab](https://www.reddit.com/r/homelab/)
+- [mischavandenburg/homelab](https://github.com/mischavandenburg/homelab)
+- [onedr0p/home-ops](https://github.com/onedr0p/home-ops/tree/main)
+- [techno-tim/k3s-ansible](https://github.com/techno-tim/k3s-ansible)
