@@ -7,11 +7,6 @@ In production environments, HA network load balancing often involves multiple de
 
 **Behavioral Note**: Traffic distribution methods vary between solutions like kube-vip, which directs traffic to a leader node, and [MetalLB](https://metallb.universe.tf/), which can balance traffic across multiple nodes.
 
-## Highly Available Persistent Storage
-
-Production Kubernetes clusters typically rely on robust, external persistent storage solutions, integrated through CSI drivers (e.g. AWS Elastic Block Store, GCE Persistent Disk, Azure Disk). In contrast, my homelab employs the built-in [etcd](https://docs.k3s.io/datastore/ha-embedded) of k3s for storage, suitable for learning and initial scaling. Future hardware enhancements will allow for the adoption of a dedicated storage system like [Longhorn](https://longhorn.io/), offering improved stability and features such as easy backup and restore, which are crucial for production use.
-
-**Upgrade Path**: The transition from embedded etcd to a more resilient storage solution will be a critical step in maturing the cluster's capability to handle stateful workloads reliably.
 
 
 ## Network Segmentation and Zero-Trust Access

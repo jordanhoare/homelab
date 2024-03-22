@@ -23,7 +23,7 @@ My homelab serves as a personal learning sandbox and a hub for new tech explorat
 
 While developing my homelab I have a few principles that underpin my decisions:
 
-- All applications and infrastructure (outside of my [cloud dependencies](#cloud-dependencies)) are run entirely on k3s. I have no VM's running auxiliary services such as DNS or storage
+- All applications and infrastructure (outside of my **cloud dependencies**) are run entirely on k3s. I have no VM's running auxiliary services such as DNS or storage
 - I don't rely on persistent storage or stateful sets (at this moment in time)
 - The cluster should be designed to tolerate at least one failure of a servers. 
 
@@ -32,7 +32,7 @@ While developing my homelab I have a few principles that underpin my decisions:
 
 ### 📁 Directories
 
-This Git repository contains the following directories under [Kubernetes](./kubernetes/).
+This Git repository contains the following directories:
 
 ```zsh
 📁 homelab
