@@ -4,5 +4,6 @@ kind: Kustomization
 
 namespace: traefik
 resources:
+- namespace.yaml
 - deployment.yaml
 - service.yaml
