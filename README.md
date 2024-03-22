@@ -17,15 +17,16 @@ My homelab serves as a personal learning sandbox and a hub for new tech explorat
 
 ## 🤝 Principles
 
-While developing my homelab I have a few principles that underpin my decisions:
-
-- All applications and infrastructure (outside of my [cloud dependencies](#☁️-cloud-dependencies))are run entirely on k3s. I have no VM's running auxiliary services such as DNS or storage
-- I don't rely on persistent storage or stateful sets (at this moment in time)
-- The cluster should be designed to tolerate at least one failure of a servers. 
-
 > [!NOTE]
 >
 > As much as possible I try to keep documentation for any decisions I make, or troubles I run into.. You can check out my notes related to my approach, design considerations and ideas, [here](jordanhoare.github.io/homelab/).
+
+While developing my homelab I have a few principles that underpin my decisions:
+
+- All applications and infrastructure (outside of my [cloud dependencies](#cloud-dependencies)) are run entirely on k3s. I have no VM's running auxiliary services such as DNS or storage
+- I don't rely on persistent storage or stateful sets (at this moment in time)
+- The cluster should be designed to tolerate at least one failure of a servers. 
+
 
 <br>
 
